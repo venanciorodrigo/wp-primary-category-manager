@@ -56,6 +56,9 @@ define( 'PRIMARY_CATEGORY_MANAGER_VERSION', '1.0.0' );
 // Require Composer autoloader if it exists.
 if ( file_exists( PCM_PATH . 'vendor/autoload.php' ) ) {
     require_once PCM_PATH . 'vendor/autoload.php';
+} else {
+    require_once PCM_PATH . 'includes/classes/PcmAdmin.php';
+    require_once PCM_PATH . 'includes/classes/PcmFrontend.php';
 }
 
 /**
