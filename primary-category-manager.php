@@ -13,17 +13,15 @@
  *
  * @package PrimaryCategoryManager
 
- * Primary Category Manager is free software: you can redistribute it and/or modify
+   Primary Category Manager is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 2 of the License, or
    any later version.
-
- * Primary Category Manager is distributed in the hope that it will be useful,
+   Primary Category Manager is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
    GNU General Public License for more details.
-
- * You should have received a copy of the GNU General Public License
+   You should have received a copy of the GNU General Public License
    along with Primary Category Manager. If not, see {License URI}.
 */
 
@@ -55,14 +53,18 @@ if ( ! defined( 'PCM_URL' ) ) {
  */
 define( 'PRIMARY_CATEGORY_MANAGER_VERSION', '1.0.0' );
 
+// Require Composer autoloader if it exists.
+if ( file_exists( PCM_PATH . 'vendor/autoload.php' ) ) {
+    require_once PCM_PATH . 'vendor/autoload.php';
+}
+
 /**
  * Load the main admin class
  */
 if ( is_admin() ) {
-    require_once PCM_PATH . 'includes/pcm-admin.php';
+    require_once PCM_PATH . 'includes/functions/pcm-core.php';
+    require_once PCM_PATH . 'includes/functions/utils.php';
 
     // Bootstrap
-    PrimaryCategoryManager\PcmAdmin\setup();
+    PrimaryCategoryManager\PcmCore\setup();
 }
-
-require_once PCM_PATH . 'classes/pcm-frontend.php';

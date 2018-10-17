@@ -1,6 +1,6 @@
 <?php
 /**
- * Insert the radio button to set the primary category
+ * Main HTML for the plugin on the post page.
  *
  * @package PrimaryCategoryManager
  */
