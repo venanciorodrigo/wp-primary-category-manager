@@ -17,7 +17,7 @@
         const categoryList  = '#categorychecklist > li';
         let selectedValue   = primaryCategorySelected;
 
-        // For each category insert a radio button to set as primary
+        // For each category insert a radio button to set as primary category
         $.each( $(categoryList).find('label'), function() {
             const self          = $(this);
             const categoryValue = self.find('input').val();
@@ -46,7 +46,6 @@
         // Add Nonce field for form security
         $('#category-adder').after( nonceField() );
 
-
         // Insert the radio button for every new category created
         $(document).ajaxComplete(function(event, xhr, settings) {
             if (settings.action == 'add-category') {
@@ -67,7 +66,7 @@
             $('.pcm-radio').prop('checked', false);
         });
 
-        // Check category if radio is selected
+        // Check the category if the radio button is selected
         $('.pcm-radio').click(function() {
             const self = $(this);
             if (self.is(':checked')) {

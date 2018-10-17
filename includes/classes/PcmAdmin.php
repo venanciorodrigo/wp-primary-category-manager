@@ -22,12 +22,12 @@ class PcmAdmin {
 
     /**
      * Save the primary category on Database
+     * There's a Security Nonce check before insert into the Database
+     * More Details: https://codex.wordpress.org/Glossary#Nonce
      *
      * @return void
      */
     public static function save_primary_category() {
-        // Security Nonce before insert into the Database
-        // More Details: https://codex.wordpress.org/Glossary#Nonce
         if (! empty( $_POST ) && check_admin_referer( 'save_primary_category', 'pcm_nonce_field' )) {
             $post_id = intval($_POST['post_ID']);
             if (isset($_POST['pcm_radio'])) {
