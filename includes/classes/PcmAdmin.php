@@ -28,12 +28,12 @@ class PcmAdmin {
      * @return void
      */
     public static function save_primary_category() {
-        if (! empty( $_POST ) && check_admin_referer( 'save_primary_category', 'pcm_nonce_field' )) {
+        if (!empty( $_POST ) && check_admin_referer('save_primary_category', 'pcm_nonce_field')) {
             $post_id = intval($_POST['post_ID']);
             if (isset($_POST['pcm_radio'])) {
-                    update_post_meta($post_id, 'pcm_primary_category', absint($_POST['pcm_radio']));
+                update_post_meta($post_id, PCM_TAXONOMY, absint($_POST['pcm_radio']));
             } else {
-                    delete_post_meta($post_id, 'pcm_primary_category');
+                delete_post_meta($post_id, PCM_TAXONOMY);
             }
         }
     }

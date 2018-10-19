@@ -56,6 +56,12 @@ if ( ! defined( 'PCM_URL' ) ) {
  */
 define( 'PRIMARY_CATEGORY_MANAGER_VERSION', '1.0.0' );
 
+/**
+ * Plugin Taxonomy
+ *
+*/
+define('PCM_TAXONOMY', 'pcm_primary_category');
+
 // Require Composer autoloader if it exists.
 if ( file_exists( PCM_PATH . 'vendor/autoload.php' ) ) {
     require_once PCM_PATH . 'vendor/autoload.php';
@@ -74,3 +80,5 @@ if ( is_admin() ) {
     // Bootstrap
     PrimaryCategoryManager\PcmCore\setup();
 }
+
+new PrimaryCategoryManager\PcmFrontend;

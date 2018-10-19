@@ -74,7 +74,7 @@ function enqueue_scripts() {
 
         // Has primary category set? Then send it to the JS
         if (isset($_GET['post'])) {
-            $category_selected = get_post_meta($_GET['post'], 'pcm_primary_category');
+            $category_selected = get_post_meta($_GET['post'], PCM_TAXONOMY);
         }
 
         wp_localize_script( 'pcm-category-box', 'primaryCategorySelected', $category_selected );
@@ -105,3 +105,4 @@ function admin_footer() {
         include_once PCM_PATH . 'templates/category-box.php';
     }
 }
+

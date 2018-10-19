@@ -8,7 +8,7 @@
 namespace PrimaryCategoryManager\Utils;
 
 /**
- * Check if it's the post page.
+ * Check if this is the post page.
  *
  * @return boolean
  */
