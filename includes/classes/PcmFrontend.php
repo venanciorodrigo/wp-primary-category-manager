@@ -19,14 +19,14 @@ class PcmFrontend {
      * @return void
      */
     public function __construct() {
-		add_shortcode('pcm', [ $this, 'build_shorcode' ]);
+        add_shortcode('pcm', [ $this, 'build_shorcode' ]);
 
-		// Extending the primary category to WP-API
-		add_action('rest_api_init', function() {
-			register_rest_field('post', PCM_TAXONOMY, [
-				'get_callback' => [$this, 'extend_pcm_to_wp_api']
-			]);
-		});
+        // Extending the primary category to WP-API
+        add_action('rest_api_init', function() {
+            register_rest_field('post', PCM_TAXONOMY, [
+                'get_callback' => [$this, 'extend_pcm_to_wp_api']
+            ]);
+        });
     }
 
     /**
@@ -69,40 +69,51 @@ class PcmFrontend {
                 ],
                 'no_found_rows' => true,
                 'post_status'   => 'publish',
-				'post_type'     => 'any'
-			]);
+                'post_type'     => 'any'
+            ]);
 
-			ob_start();
+            ob_start();
 
-			if ($pcm_query->have_posts()) :
+            if ($pcm_query->have_posts()) :
 
-				// Hook to developers implement whatever they want before the list
-				do_action( 'pcm_before_list' );
+                $pcm_template       = PCM_PATH . '/templates/post-list.php';
+                $post_list_theme    = get_template_directory() . '/' . PCM_TAXONOMY . '/post-list.php';
+
+                // User has his own template to display the content?
+                if (file_exists($post_list_theme)) {
+                    $pcm_template = $post_list_theme;
+                }
+
+                // Hook to developers implement whatever they want before the list
+                do_action( 'pcm_before_list' );
 
                 while ($pcm_query->have_posts()) :
-					$pcm_query->the_post();
-					require(PCM_PATH . '/templates/post-list.php');
-				endwhile;
 
-				// Hook to developers implement whatever they want after the list
-				do_action( 'pcm_after_list' );
+                    $pcm_query->the_post();
 
-			endif;
+                    require($pcm_template);
 
-			wp_reset_postdata();
+                endwhile;
 
-			return ob_get_clean();
-		}
+                // Hook to developers implement whatever they want after the list
+                do_action( 'pcm_after_list' );
+
+            endif;
+
+            wp_reset_postdata();
+
+            return ob_get_clean();
+        }
 
         return;
-	}
+    }
 
-	/**
-	 * Let's be nice with WP-API and send the primary category field for all posts.
-	 *
-	 * @return string
-	 */
-	function extend_pcm_to_wp_api($object, $field_name) {
-		return get_post_meta($object['id'], $field_name, true);
-	}
+    /**
+     * Let's be nice with WP-API and send the primary category field for all posts.
+     *
+     * @return string
+     */
+    function extend_pcm_to_wp_api($object, $field_name) {
+        return get_post_meta($object['id'], $field_name, true);
+    }
 }
