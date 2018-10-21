@@ -42,6 +42,11 @@ Also the plugin provide a new field on the WP-API called `pcm_primary_category` 
 * [Grunt](https://gruntjs.com/)
 * [Gulp](https://gulpjs.com/)
 
+## Improvements?
+
+* Apply PHP Unit Tests - [PHPUnit](https://make.wordpress.org/cli/handbook/plugin-unit-tests/)
+* Apply JS Unit Tests - [QUnit](https://make.wordpress.org/core/handbook/testing/automated-testing/qunit/)
+
 ## Author
 
 * **Rodrigo Venancio** - http://rodrigovenancio.info/
