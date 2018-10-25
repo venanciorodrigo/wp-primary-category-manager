@@ -45,8 +45,8 @@ Also the plugin provide a new field on the WP-API called `pcm_primary_category` 
 ## Improvements?
 
 1. Apply More PHP Unit Tests
-> - Right now we're just testing one function of the plugin to proove the concept of Unit Tests.
-> - The goal of this improvement is to apply tests for all functions of the plugin.
+* Right now we're just testing one function of the plugin to proove the concept of Unit Tests and [WP_MOCK](https://github.com/10up/wp_mock).
+* The goal of this improvement is to apply tests for all functions of the plugin.
 
 2. Apply JS Unit Tests - [QUnit](https://make.wordpress.org/core/handbook/testing/automated-testing/qunit/)
 
