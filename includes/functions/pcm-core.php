@@ -36,9 +36,9 @@ function setup() {
  * @return void
  */
 function i18n() {
-    $locale = apply_filters( 'plugin_locale', get_locale(), 'primary-category-manager' );
-    load_textdomain( 'primary-category-manager', WP_LANG_DIR . '/primary-category-manager/primary-category-manager-' . $locale . '.mo' );
-    load_plugin_textdomain( 'primary-category-manager', false, plugin_basename( PCM_PATH ) . '/lang/' );
+    $locale = apply_filters( 'plugin_locale', get_locale(), PCM_DOMAIN );
+    load_textdomain( PCM_DOMAIN, WP_LANG_DIR . '/' . PCM_DOMAIN . '/' . PCM_DOMAIN . '-' . $locale . '.mo' );
+    load_plugin_textdomain( PCM_DOMAIN, false, plugin_basename( PCM_PATH ) . '/lang/' );
 }
 
 /**

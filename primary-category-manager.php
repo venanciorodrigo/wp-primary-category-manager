@@ -62,6 +62,12 @@ define( 'PRIMARY_CATEGORY_MANAGER_VERSION', '1.0.0' );
 */
 define('PCM_TAXONOMY', 'pcm_primary_category');
 
+/**
+ * Plugin Domain
+ *
+*/
+define('PCM_DOMAIN', 'primary-category-manager');
+
 // Require Composer autoloader if it exists.
 if ( file_exists( PCM_PATH . 'vendor/autoload.php' ) ) {
     require_once PCM_PATH . 'vendor/autoload.php';
